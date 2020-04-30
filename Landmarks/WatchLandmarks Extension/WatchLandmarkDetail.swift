@@ -1,10 +1,3 @@
-//
-//  WatchLandmarkDetail.swift
-//  WatchLandmarks Extension
-//
-//  Created by Christian Bartram on 4/30/20.
-//  Copyright © 2020 Apple. All rights reserved.
-//
 import SwiftUI
 
 struct WatchLandmarkDetail: View {
@@ -16,29 +9,33 @@ struct WatchLandmarkDetail: View {
     }
     
     var body: some View {
-        VStack {
-            CircleImage(image: self.landmark.image.resizable())
-                .scaledToFill()
-            
-            Text(self.landmark.name)
-                .font(.headline)
-                .lineLimit(0)
-            
-            Toggle(isOn:
-            $userData.landmarks[self.landmarkIndex].isFavorite) {
-                Text("Favorite")
+        ScrollView {
+            VStack {
+                CircleImage(image: self.landmark.image.resizable())
+                    .scaledToFit()
+                
+                Text(self.landmark.name)
+                    .font(.headline)
+                    .lineLimit(0)
+                
+                Toggle(isOn:
+                $userData.landmarks[self.landmarkIndex].isFavorite) {
+                    Text("Favorite")
+                }
+                
+                Divider()
+                
+                Text(self.landmark.park)
+                    .font(.caption)
+                    .bold()
+                    .lineLimit(0)
+                
+                Text(self.landmark.state)
+                    .font(.caption)
             }
-            
-            Divider()
-            
-            Text(self.landmark.park)
-                .font(.caption)
-                .bold()
-                .lineLimit(0)
-            
-            Text(self.landmark.state)
-                .font(.caption)
+            .padding(16)
         }
+        .navigationBarTitle("Landmarks")
     }
 }
 

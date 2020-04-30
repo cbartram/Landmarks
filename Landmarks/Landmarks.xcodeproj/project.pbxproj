@@ -45,6 +45,7 @@
 		7158D082245B609A00A1C581 /* umbagog.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B7394889229F292E00C47603 /* umbagog.jpg */; };
 		7158D083245B609A00A1C581 /* charleyrivers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B73948A2229F3E2200C47603 /* charleyrivers.jpg */; };
 		7158D085245B639500A1C581 /* WatchLandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158D084245B639500A1C581 /* WatchLandmarkDetail.swift */; };
+		7158D087245B65A800A1C581 /* WatchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158D086245B65A800A1C581 /* WatchMapView.swift */; };
 		B7310DD1229F6839001079B9 /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD0229F6839001079B9 /* HexagonParameters.swift */; };
 		B7310DD3229F6CA9001079B9 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD2229F6CA9001079B9 /* Badge.swift */; };
 		B7394866229F194000C47603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7394865229F194000C47603 /* AppDelegate.swift */; };
@@ -157,6 +158,7 @@
 		7158D05E245B5C4000A1C581 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7158D05F245B5C4000A1C581 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		7158D084245B639500A1C581 /* WatchLandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLandmarkDetail.swift; sourceTree = "<group>"; };
+		7158D086245B65A800A1C581 /* WatchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchMapView.swift; sourceTree = "<group>"; };
 		73F95A9A1230AE62CF0AAC9F /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = ../Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		ABFE17D910FE79A157ADD56D /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		B7310DD0229F6839001079B9 /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				7158D05F245B5C4000A1C581 /* PushNotificationPayload.apns */,
 				7158D05B245B5C4000A1C581 /* Preview Content */,
 				7158D084245B639500A1C581 /* WatchLandmarkDetail.swift */,
+				7158D086245B65A800A1C581 /* WatchMapView.swift */,
 			);
 			path = "WatchLandmarks Extension";
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				7158D070245B5DF000A1C581 /* Hike.swift in Sources */,
 				7158D052245B5C3F00A1C581 /* ExtensionDelegate.swift in Sources */,
 				7158D056245B5C3F00A1C581 /* NotificationView.swift in Sources */,
+				7158D087245B65A800A1C581 /* WatchMapView.swift in Sources */,
 				7158D06F245B5DF000A1C581 /* Profile.swift in Sources */,
 				7158D06B245B5DF000A1C581 /* LandmarkRow.swift in Sources */,
 				7158D058245B5C3F00A1C581 /* ComplicationController.swift in Sources */,
