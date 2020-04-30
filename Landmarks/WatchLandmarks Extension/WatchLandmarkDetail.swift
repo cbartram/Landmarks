@@ -32,6 +32,12 @@ struct WatchLandmarkDetail: View {
                 
                 Text(self.landmark.state)
                     .font(.caption)
+                
+                Divider()
+                
+               WatchMapView(landmark: self.landmark)
+                   .scaledToFit()
+                   .padding()
             }
             .padding(16)
         }

@@ -46,6 +46,7 @@
 		7158D083245B609A00A1C581 /* charleyrivers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B73948A2229F3E2200C47603 /* charleyrivers.jpg */; };
 		7158D085245B639500A1C581 /* WatchLandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158D084245B639500A1C581 /* WatchLandmarkDetail.swift */; };
 		7158D087245B65A800A1C581 /* WatchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158D086245B65A800A1C581 /* WatchMapView.swift */; };
+		7158D088245B6BB400A1C581 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73948A0229F2E1F00C47603 /* LandmarkList.swift */; };
 		B7310DD1229F6839001079B9 /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD0229F6839001079B9 /* HexagonParameters.swift */; };
 		B7310DD3229F6CA9001079B9 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD2229F6CA9001079B9 /* Badge.swift */; };
 		B7394866229F194000C47603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7394865229F194000C47603 /* AppDelegate.swift */; };
@@ -607,6 +608,7 @@
 				7158D085245B639500A1C581 /* WatchLandmarkDetail.swift in Sources */,
 				7158D050245B5C3F00A1C581 /* HostingController.swift in Sources */,
 				7158D06E245B5DF000A1C581 /* Data.swift in Sources */,
+				7158D088245B6BB400A1C581 /* LandmarkList.swift in Sources */,
 				7158D04E245B5C3F00A1C581 /* ContentView.swift in Sources */,
 				7158D071245B5DF000A1C581 /* CircleImage.swift in Sources */,
 				7158D054245B5C3F00A1C581 /* NotificationController.swift in Sources */,
