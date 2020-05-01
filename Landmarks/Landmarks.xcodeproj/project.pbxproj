@@ -47,6 +47,8 @@
 		7158D085245B639500A1C581 /* WatchLandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158D084245B639500A1C581 /* WatchLandmarkDetail.swift */; };
 		7158D087245B65A800A1C581 /* WatchMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7158D086245B65A800A1C581 /* WatchMapView.swift */; };
 		7158D088245B6BB400A1C581 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73948A0229F2E1F00C47603 /* LandmarkList.swift */; };
+		7158D08D245C797100A1C581 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7158D08C245C797100A1C581 /* HealthKit.framework */; };
+		7158D090245C79C300A1C581 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7158D08F245C79C300A1C581 /* HealthKit.framework */; };
 		B7310DD1229F6839001079B9 /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD0229F6839001079B9 /* HexagonParameters.swift */; };
 		B7310DD3229F6CA9001079B9 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD2229F6CA9001079B9 /* Badge.swift */; };
 		B7394866229F194000C47603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7394865229F194000C47603 /* AppDelegate.swift */; };
@@ -120,14 +122,14 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		7158D063245B5C4000A1C581 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
 				7158D062245B5C4000A1C581 /* WatchLandmarks.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		7158D066245B5C4000A1C581 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -160,6 +162,10 @@
 		7158D05F245B5C4000A1C581 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		7158D084245B639500A1C581 /* WatchLandmarkDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLandmarkDetail.swift; sourceTree = "<group>"; };
 		7158D086245B65A800A1C581 /* WatchMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchMapView.swift; sourceTree = "<group>"; };
+		7158D08A245C797100A1C581 /* WatchLandmarks Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchLandmarks Extension.entitlements"; sourceTree = "<group>"; };
+		7158D08C245C797100A1C581 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		7158D08E245C79C300A1C581 /* Landmarks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Landmarks.entitlements; sourceTree = "<group>"; };
+		7158D08F245C79C300A1C581 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		73F95A9A1230AE62CF0AAC9F /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = ../Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		ABFE17D910FE79A157ADD56D /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		B7310DD0229F6839001079B9 /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7158D08D245C797100A1C581 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +237,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7158D090245C79C300A1C581 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +292,7 @@
 		7158D04C245B5C3F00A1C581 /* WatchLandmarks Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7158D08A245C797100A1C581 /* WatchLandmarks Extension.entitlements */,
 				7158D04D245B5C3F00A1C581 /* ContentView.swift */,
 				7158D04F245B5C3F00A1C581 /* HostingController.swift */,
 				7158D051245B5C3F00A1C581 /* ExtensionDelegate.swift */,
@@ -306,6 +315,15 @@
 				7158D05C245B5C4000A1C581 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7158D08B245C797100A1C581 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7158D08F245C79C300A1C581 /* HealthKit.framework */,
+				7158D08C245C797100A1C581 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		85F782A36AC185A1DAAD3B9C /* Configuration */ = {
@@ -335,6 +353,7 @@
 				B7394863229F194000C47603 /* Products */,
 				85F782A36AC185A1DAAD3B9C /* Configuration */,
 				8C85F8751C6DDF1B3AA58B49 /* LICENSE */,
+				7158D08B245C797100A1C581 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -351,6 +370,7 @@
 		B7394864229F194000C47603 /* Landmarks */ = {
 			isa = PBXGroup;
 			children = (
+				7158D08E245C79C300A1C581 /* Landmarks.entitlements */,
 				B7394865229F194000C47603 /* AppDelegate.swift */,
 				B7394867229F194000C47603 /* SceneDelegate.swift */,
 				437EFFB522E76A8C00B2A544 /* Home */,
@@ -703,10 +723,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9K3CGS6NU;
 				IBSC_MODULE = WatchLandmarks_Extension;
 				INFOPLIST_FILE = WatchLandmarks/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Landmarks.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.landmarks.cbartram.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -722,10 +742,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9K3CGS6NU;
 				IBSC_MODULE = WatchLandmarks_Extension;
 				INFOPLIST_FILE = WatchLandmarks/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Landmarks.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.landmarks.cbartram.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -739,6 +759,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchLandmarks Extension/WatchLandmarks Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchLandmarks Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = D9K3CGS6NU;
@@ -749,8 +771,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Landmarks.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.landmarks.cbartram.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -763,6 +786,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "WatchLandmarks Extension/WatchLandmarks Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"WatchLandmarks Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = D9K3CGS6NU;
@@ -773,8 +798,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Landmarks.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.landmarks.cbartram.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -904,16 +930,18 @@
 			baseConfigurationReference = 73F95A9A1230AE62CF0AAC9F /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Landmarks/Landmarks.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Landmarks/Preview\\ Content";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9K3CGS6NU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Landmarks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Landmarks${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.landmarks.cbartram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -926,16 +954,18 @@
 			baseConfigurationReference = 73F95A9A1230AE62CF0AAC9F /* SampleCode.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Landmarks/Landmarks.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "Landmarks/Preview\\ Content";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = D9K3CGS6NU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Landmarks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.apple-samplecode.Landmarks${SAMPLE_CODE_DISAMBIGUATOR}";
+				PRODUCT_BUNDLE_IDENTIFIER = com.landmarks.cbartram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

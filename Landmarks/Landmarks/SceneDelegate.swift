@@ -7,15 +7,30 @@ The scene delegate.
 
 import UIKit
 import SwiftUI
+import HealthKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        let healthStore = HKHealthStore()
+
+        let typesToShare: Set = [
+            HKQuantityType.workoutType()
+        ]
+
+        let typesToRead: Set = [
+            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
+        ]
+
+        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
+            // Handle error
+
+        }
 
         // Use a UIHostingController as window root view controller
         if let windowScene = scene as? UIWindowScene {

@@ -7,11 +7,30 @@
 //
 
 import SwiftUI
+import HealthKit
 
 struct ContentView: View {
     var body: some View {
-       LandmarkList { WatchLandmarkDetail(landmark: $0) }
-        .environmentObject(UserData())
+        
+       let healthStore = HKHealthStore()
+
+       let typesToShare: Set = [
+           HKQuantityType.workoutType()
+       ]
+
+       let typesToRead: Set = [
+           HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+           HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+           HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
+       ]
+
+       healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
+           // Handle error
+       }
+        
+       return LandmarkList {
+        WatchLandmarkDetail(landmark: $0)
+       }.environmentObject(UserData())
     }
 }
 

@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.example.apple-samplecode.Landmarks</string>
+	<string>com.landmarks.cbartram</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

@@ -41,11 +41,15 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>WKAppBundleIdentifier</key>
-			<string>com.example.apple-samplecode.Landmarks.watchkitapp</string>
+			<string>com.landmarks.cbartram.watchkitapp</string>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>We require access to share some health metrics</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>We require access to some health metrics</string>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 	<key>WKRunsIndependentlyOfCompanionApp</key>
