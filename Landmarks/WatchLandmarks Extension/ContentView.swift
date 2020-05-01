@@ -6,6 +6,7 @@
 //  Copyright © 2020 Apple. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 import HealthKit
 
@@ -32,6 +33,17 @@ struct ContentView: View {
        }
         
         do {
+            let urlSession = URLSession(configuration: .default)
+            let webSocketTask = urlSession.webSocketTask(with: URL(string: "ws://localhost:8080/ws/greetings")!)
+            webSocketTask.resume()
+
+            let message = URLSessionWebSocketTask.Message.string("Hello Socket")
+            webSocketTask.send(message) { error in
+                if let error = error {
+                    print("WebSocket sending error: \(error)")
+                }
+            }
+
             let configuration: HKWorkoutConfiguration = HKWorkoutConfiguration()
             let session: HKWorkoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
             let builder: HKLiveWorkoutBuilder = session.associatedWorkoutBuilder()
@@ -52,16 +64,8 @@ struct ContentView: View {
                 for sample in samples {
                     // Process each sample here.
                     let sampleValue = sample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
-                    print("Sample Heart Rate Raw:", sampleValue)
                     let roundedValue = Double( round( 1 * sampleValue ) / 1 )
-                    print("Rounded Value: ", roundedValue)
-                }
-                
-                // The results come back on an anonymous background queue.
-                // Dispatch to the main queue before modifying the UI.
-                
-                DispatchQueue.main.async {
-                    // Update the UI here.
+//                    print("Rounded Value: ", roundedValue)
                 }
             }
             
