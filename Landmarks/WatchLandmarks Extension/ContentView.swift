@@ -40,8 +40,12 @@ struct ContentView: View {
 
        let typesToRead: Set = [
            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
-           HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
-           HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
+           HKQuantityType.quantityType(forIdentifier: .oxygenSaturation)!,
+           HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!,
+           HKQuantityType.quantityType(forIdentifier: .respiratoryRate)!,
+           HKQuantityType.quantityType(forIdentifier: .bloodPressureSystolic)!,
+           HKQuantityType.quantityType(forIdentifier: .bloodPressureDiastolic)!,
+           HKQuantityType.quantityType(forIdentifier: .vo2Max)!
        ]
         
        print("Getting user authorization for health metrics")
@@ -71,48 +75,7 @@ struct ContentView: View {
                print("Beginning workout metric collection...")
             }
             
-            guard let sampleType = HKSampleType.quantityType(forIdentifier: .heartRate) else {
-                fatalError("*** This method should never fail ***")
-            }
-            
-//            for sample in samples {
-//                         // Process each sample here.
-//                         let sampleValue = sample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
-//                         let roundedValue = Double( round( 1 * sampleValue ) / 1 )
-//                         print("Publishing value: ", roundedValue)
-            
-            
-            let query = HKObserverQuery(sampleType: sampleType, predicate: nil) { (query, completionHandler, errorOrNil) in
-                
-                if let error = errorOrNil {
-                    print("Error thrown when executing HK Observer query: ", error)
-                    return
-                }
-                   
-                
-                let query = HKAnchoredObjectQuery(type: sampleType, predicate: nil, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samplesOrNil, deletedObjectsOrNil, newAnchor, errorOrNil) in
-                    
-                     guard let samples = samplesOrNil as? [HKQuantitySample] else {
-                           // Handle any errors here.
-                           return
-                       }
-                                    
-                    for sample in samples {
-                        let sampleValue = sample.quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
-                        let roundedValue = Double( round( 1 * sampleValue ) / 1 )
-                        print("Publishing value: ", roundedValue)
-                        let message = URLSessionWebSocketTask.Message.string("{ \"metric\": \"heartRate\", \"value\": \"" + String(format:"%.1f", roundedValue) + "\"}")
-                        webSocketTask.send(message) { error in
-                            if let error = error {
-                                print("WebSocket couldn’t send message because: \(error)")
-                             }
-                        }
-                    }
-                }
-                healthStore.execute(query)
-            }
-            
-            healthStore.execute(query)
+            HeartRatePublisher().publish(healthStore: healthStore)
           } catch {
             print("There was an error starting the workout")
           }

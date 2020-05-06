@@ -49,6 +49,8 @@
 		7158D088245B6BB400A1C581 /* LandmarkList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73948A0229F2E1F00C47603 /* LandmarkList.swift */; };
 		7158D08D245C797100A1C581 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7158D08C245C797100A1C581 /* HealthKit.framework */; };
 		7158D090245C79C300A1C581 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7158D08F245C79C300A1C581 /* HealthKit.framework */; };
+		717763D8246304420002EB30 /* HeartRatePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763D7246304420002EB30 /* HeartRatePublisher.swift */; };
+		717763DA246304A00002EB30 /* WebSocketPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763D9246304A00002EB30 /* WebSocketPublisher.swift */; };
 		B7310DD1229F6839001079B9 /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD0229F6839001079B9 /* HexagonParameters.swift */; };
 		B7310DD3229F6CA9001079B9 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD2229F6CA9001079B9 /* Badge.swift */; };
 		B7394866229F194000C47603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7394865229F194000C47603 /* AppDelegate.swift */; };
@@ -166,6 +168,8 @@
 		7158D08C245C797100A1C581 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.2.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		7158D08E245C79C300A1C581 /* Landmarks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Landmarks.entitlements; sourceTree = "<group>"; };
 		7158D08F245C79C300A1C581 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		717763D7246304420002EB30 /* HeartRatePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRatePublisher.swift; sourceTree = "<group>"; };
+		717763D9246304A00002EB30 /* WebSocketPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketPublisher.swift; sourceTree = "<group>"; };
 		73F95A9A1230AE62CF0AAC9F /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = ../Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		ABFE17D910FE79A157ADD56D /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		B7310DD0229F6839001079B9 /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				7158D05B245B5C4000A1C581 /* Preview Content */,
 				7158D084245B639500A1C581 /* WatchLandmarkDetail.swift */,
 				7158D086245B65A800A1C581 /* WatchMapView.swift */,
+				717763D7246304420002EB30 /* HeartRatePublisher.swift */,
+				717763D9246304A00002EB30 /* WebSocketPublisher.swift */,
 			);
 			path = "WatchLandmarks Extension";
 			sourceTree = "<group>";
@@ -634,8 +640,10 @@
 				7158D054245B5C3F00A1C581 /* NotificationController.swift in Sources */,
 				7158D06D245B5DF000A1C581 /* UserData.swift in Sources */,
 				7158D06C245B5DF000A1C581 /* Landmark.swift in Sources */,
+				717763D8246304420002EB30 /* HeartRatePublisher.swift in Sources */,
 				7158D070245B5DF000A1C581 /* Hike.swift in Sources */,
 				7158D052245B5C3F00A1C581 /* ExtensionDelegate.swift in Sources */,
+				717763DA246304A00002EB30 /* WebSocketPublisher.swift in Sources */,
 				7158D056245B5C3F00A1C581 /* NotificationView.swift in Sources */,
 				7158D087245B65A800A1C581 /* WatchMapView.swift in Sources */,
 				7158D06F245B5DF000A1C581 /* Profile.swift in Sources */,
