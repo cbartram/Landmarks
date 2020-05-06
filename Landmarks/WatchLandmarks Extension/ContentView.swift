@@ -40,9 +40,9 @@ struct ContentView: View {
 
        let typesToRead: Set = [
            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+           HKQuantityType.quantityType(forIdentifier: .respiratoryRate)!,
            HKQuantityType.quantityType(forIdentifier: .oxygenSaturation)!,
            HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!,
-           HKQuantityType.quantityType(forIdentifier: .respiratoryRate)!,
            HKQuantityType.quantityType(forIdentifier: .bloodPressureSystolic)!,
            HKQuantityType.quantityType(forIdentifier: .bloodPressureDiastolic)!,
            HKQuantityType.quantityType(forIdentifier: .vo2Max)!
@@ -54,11 +54,6 @@ struct ContentView: View {
        }
         
         do {
-            let urlSession = URLSession(configuration: .default)
-            let webSocketTask = urlSession.webSocketTask(with: URL(string: "ws://localhost:8080/ws/metrics")!)
-            print("Opening Websocket connection to url: ws://localhost:8080/ws/metrics")
-            webSocketTask.resume()
-
             let configuration = HKWorkoutConfiguration()
             configuration.activityType = .running
             configuration.locationType = .outdoor
@@ -75,7 +70,18 @@ struct ContentView: View {
                print("Beginning workout metric collection...")
             }
             
-            HeartRatePublisher().publish(healthStore: healthStore)
+            let urlSession = URLSession(configuration: .default)
+            let webSocketTask = urlSession.webSocketTask(with: URL(string: "ws://localhost:8080/ws/metrics")!)
+            print("Opening Websocket connection to url: ws://localhost:8080/ws/metrics")
+            webSocketTask.resume()
+            
+            HeartRatePublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
+            RespiratoryRatePublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
+            OxygenSaturationPublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
+            BodyTemperaturePublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
+            BloodPressureSysPublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
+            BloodPressureDiastolicPublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
+            VO2Publisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
           } catch {
             print("There was an error starting the workout")
           }

@@ -51,6 +51,13 @@
 		7158D090245C79C300A1C581 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7158D08F245C79C300A1C581 /* HealthKit.framework */; };
 		717763D8246304420002EB30 /* HeartRatePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763D7246304420002EB30 /* HeartRatePublisher.swift */; };
 		717763DA246304A00002EB30 /* WebSocketPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763D9246304A00002EB30 /* WebSocketPublisher.swift */; };
+		717763DD2463089D0002EB30 /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763DC2463089D0002EB30 /* Publisher.swift */; };
+		717763DF24630D770002EB30 /* RespiratoryRatePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763DE24630D770002EB30 /* RespiratoryRatePublisher.swift */; };
+		717763E12463114C0002EB30 /* OxygenSaturationPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763E02463114C0002EB30 /* OxygenSaturationPublisher.swift */; };
+		717763E3246319590002EB30 /* BodyTemperaturePublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763E2246319590002EB30 /* BodyTemperaturePublisher.swift */; };
+		717763E5246319E40002EB30 /* BloodPressureSysPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763E4246319E40002EB30 /* BloodPressureSysPublisher.swift */; };
+		717763E724631C3F0002EB30 /* BloodPressureDiastolic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763E624631C3F0002EB30 /* BloodPressureDiastolic.swift */; };
+		717763E924631C720002EB30 /* V02Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717763E824631C720002EB30 /* V02Publisher.swift */; };
 		B7310DD1229F6839001079B9 /* HexagonParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD0229F6839001079B9 /* HexagonParameters.swift */; };
 		B7310DD3229F6CA9001079B9 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7310DD2229F6CA9001079B9 /* Badge.swift */; };
 		B7394866229F194000C47603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7394865229F194000C47603 /* AppDelegate.swift */; };
@@ -170,6 +177,13 @@
 		7158D08F245C79C300A1C581 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		717763D7246304420002EB30 /* HeartRatePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRatePublisher.swift; sourceTree = "<group>"; };
 		717763D9246304A00002EB30 /* WebSocketPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketPublisher.swift; sourceTree = "<group>"; };
+		717763DC2463089D0002EB30 /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		717763DE24630D770002EB30 /* RespiratoryRatePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespiratoryRatePublisher.swift; sourceTree = "<group>"; };
+		717763E02463114C0002EB30 /* OxygenSaturationPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenSaturationPublisher.swift; sourceTree = "<group>"; };
+		717763E2246319590002EB30 /* BodyTemperaturePublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTemperaturePublisher.swift; sourceTree = "<group>"; };
+		717763E4246319E40002EB30 /* BloodPressureSysPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureSysPublisher.swift; sourceTree = "<group>"; };
+		717763E624631C3F0002EB30 /* BloodPressureDiastolic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureDiastolic.swift; sourceTree = "<group>"; };
+		717763E824631C720002EB30 /* V02Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = V02Publisher.swift; sourceTree = "<group>"; };
 		73F95A9A1230AE62CF0AAC9F /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = ../Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		ABFE17D910FE79A157ADD56D /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		B7310DD0229F6839001079B9 /* HexagonParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonParameters.swift; sourceTree = "<group>"; };
@@ -296,6 +310,7 @@
 		7158D04C245B5C3F00A1C581 /* WatchLandmarks Extension */ = {
 			isa = PBXGroup;
 			children = (
+				717763DB2463084A0002EB30 /* publisher */,
 				7158D08A245C797100A1C581 /* WatchLandmarks Extension.entitlements */,
 				7158D04D245B5C3F00A1C581 /* ContentView.swift */,
 				7158D04F245B5C3F00A1C581 /* HostingController.swift */,
@@ -309,8 +324,6 @@
 				7158D05B245B5C4000A1C581 /* Preview Content */,
 				7158D084245B639500A1C581 /* WatchLandmarkDetail.swift */,
 				7158D086245B65A800A1C581 /* WatchMapView.swift */,
-				717763D7246304420002EB30 /* HeartRatePublisher.swift */,
-				717763D9246304A00002EB30 /* WebSocketPublisher.swift */,
 			);
 			path = "WatchLandmarks Extension";
 			sourceTree = "<group>";
@@ -330,6 +343,22 @@
 				7158D08C245C797100A1C581 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		717763DB2463084A0002EB30 /* publisher */ = {
+			isa = PBXGroup;
+			children = (
+				717763D7246304420002EB30 /* HeartRatePublisher.swift */,
+				717763D9246304A00002EB30 /* WebSocketPublisher.swift */,
+				717763DC2463089D0002EB30 /* Publisher.swift */,
+				717763DE24630D770002EB30 /* RespiratoryRatePublisher.swift */,
+				717763E02463114C0002EB30 /* OxygenSaturationPublisher.swift */,
+				717763E2246319590002EB30 /* BodyTemperaturePublisher.swift */,
+				717763E4246319E40002EB30 /* BloodPressureSysPublisher.swift */,
+				717763E624631C3F0002EB30 /* BloodPressureDiastolic.swift */,
+				717763E824631C720002EB30 /* V02Publisher.swift */,
+			);
+			path = publisher;
 			sourceTree = "<group>";
 		};
 		85F782A36AC185A1DAAD3B9C /* Configuration */ = {
@@ -631,14 +660,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717763E5246319E40002EB30 /* BloodPressureSysPublisher.swift in Sources */,
 				7158D085245B639500A1C581 /* WatchLandmarkDetail.swift in Sources */,
 				7158D050245B5C3F00A1C581 /* HostingController.swift in Sources */,
 				7158D06E245B5DF000A1C581 /* Data.swift in Sources */,
+				717763E3246319590002EB30 /* BodyTemperaturePublisher.swift in Sources */,
 				7158D088245B6BB400A1C581 /* LandmarkList.swift in Sources */,
 				7158D04E245B5C3F00A1C581 /* ContentView.swift in Sources */,
 				7158D071245B5DF000A1C581 /* CircleImage.swift in Sources */,
 				7158D054245B5C3F00A1C581 /* NotificationController.swift in Sources */,
+				717763DF24630D770002EB30 /* RespiratoryRatePublisher.swift in Sources */,
 				7158D06D245B5DF000A1C581 /* UserData.swift in Sources */,
+				717763E12463114C0002EB30 /* OxygenSaturationPublisher.swift in Sources */,
+				717763E924631C720002EB30 /* V02Publisher.swift in Sources */,
 				7158D06C245B5DF000A1C581 /* Landmark.swift in Sources */,
 				717763D8246304420002EB30 /* HeartRatePublisher.swift in Sources */,
 				7158D070245B5DF000A1C581 /* Hike.swift in Sources */,
@@ -647,6 +681,8 @@
 				7158D056245B5C3F00A1C581 /* NotificationView.swift in Sources */,
 				7158D087245B65A800A1C581 /* WatchMapView.swift in Sources */,
 				7158D06F245B5DF000A1C581 /* Profile.swift in Sources */,
+				717763E724631C3F0002EB30 /* BloodPressureDiastolic.swift in Sources */,
+				717763DD2463089D0002EB30 /* Publisher.swift in Sources */,
 				7158D06B245B5DF000A1C581 /* LandmarkRow.swift in Sources */,
 				7158D058245B5C3F00A1C581 /* ComplicationController.swift in Sources */,
 			);

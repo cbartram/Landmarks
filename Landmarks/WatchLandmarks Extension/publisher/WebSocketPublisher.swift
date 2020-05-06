@@ -13,11 +13,8 @@ class WebSocketPublisher {
     
     var webSocketTask: URLSessionWebSocketTask
     
-    init() {
-        let urlSession = URLSession(configuration: .default)
-        self.webSocketTask = urlSession.webSocketTask(with: URL(string: "ws://localhost:8080/ws/metrics")!)
-        print("Opening Websocket connection to url: ws://localhost:8080/ws/metrics")
-        webSocketTask.resume()
+    init(webSocketTask: URLSessionWebSocketTask) {
+        self.webSocketTask = webSocketTask
     }
     
     func publishMetric(forMetric: HKQuantityTypeIdentifier, value: Double) {

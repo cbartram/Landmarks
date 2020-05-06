@@ -10,7 +10,7 @@ import Foundation
 import HealthKit
 
 
-class HeartRatePublisher: WebSocketPublisher {
+class HeartRatePublisher: WebSocketPublisher, Publisher {    
     func publish(healthStore: HKHealthStore) {
         guard let heartRateType = HKSampleType.quantityType(forIdentifier: .heartRate) else {
             fatalError("*** This method should never fail ***")
