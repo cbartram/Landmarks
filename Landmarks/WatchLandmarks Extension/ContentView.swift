@@ -12,88 +12,77 @@ import HealthKit
 
 struct ContentView: View {
     
-    func getHealthValues(store: HKHealthStore, sampleType: HKSampleType, completion: @escaping ([HKQuantitySample]) -> Void) {
-        let query = HKSampleQuery(sampleType: sampleType, predicate: nil, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) {
-            query, results, error in
-
-            guard let samples = results as? [HKQuantitySample] else {
-                return
-            }
-            
-            // Basically a callback
-            DispatchQueue.main.async {
-                completion(samples)
-            }
-        }
-
-        store.execute(query)
-    }
-
+    //    func getHealthValues(store: HKHealthStore, sampleType: HKSampleType, completion: @escaping ([HKQuantitySample]) -> Void) {
+    //        let query = HKSampleQuery(sampleType: sampleType, predicate: nil, limit: Int(HKObjectQueryNoLimit), sortDescriptors: nil) {
+    //            query, results, error in
+    //
+    //            guard let samples = results as? [HKQuantitySample] else {
+    //                return
+    //            }
+    //
+    //            // Basically a callback
+    //            DispatchQueue.main.async {
+    //                completion(samples)
+    //            }
+    //        }
+    //
+    //        store.execute(query)
+    //    }
     var body: some View {
         
-       print("Setting up health store...")
-       let healthStore = HKHealthStore()
-
-       let typesToShare: Set = [
-           HKQuantityType.workoutType()
-       ]
-
-       let typesToRead: Set = [
-           HKQuantityType.quantityType(forIdentifier: .heartRate)!,
-           HKQuantityType.quantityType(forIdentifier: .respiratoryRate)!,
-           HKQuantityType.quantityType(forIdentifier: .oxygenSaturation)!,
-           HKQuantityType.quantityType(forIdentifier: .bodyTemperature)!,
-           HKQuantityType.quantityType(forIdentifier: .bloodPressureSystolic)!,
-           HKQuantityType.quantityType(forIdentifier: .bloodPressureDiastolic)!,
-           HKQuantityType.quantityType(forIdentifier: .vo2Max)!
-       ]
+        print("Setting up health store...")
+        let healthStore = HKHealthStore()
         
-       print("Getting user authorization for health metrics")
-       healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
-           // Handle error
-       }
+        let typesToShare: Set = [
+            HKQuantityType.workoutType(),
+            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+        ]
         
-        do {
-            let configuration = HKWorkoutConfiguration()
-            configuration.activityType = .running
-            configuration.locationType = .outdoor
-            
-            let session: HKWorkoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
-            let builder: HKLiveWorkoutBuilder = session.associatedWorkoutBuilder()
-            
-            // Set the datasource for the workout
-            builder.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: configuration)
-             
-            // Start the workout
-            session.startActivity(with: Date())
-            builder.beginCollection(withStart: Date()) { (success, error) in
-               print("Beginning workout metric collection...")
+        let typesToRead: Set = [
+            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+        ]
+        
+        print("Getting user authorization for health metrics")
+        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
+            do {
+                let configuration = HKWorkoutConfiguration()
+                configuration.activityType = .running
+                configuration.locationType = .outdoor
+                
+                let session: HKWorkoutSession = try HKWorkoutSession(healthStore: healthStore, configuration: configuration)
+                let builder: HKLiveWorkoutBuilder = session.associatedWorkoutBuilder()
+                
+                // Set the datasource for the workout
+                let dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: configuration)
+                builder.dataSource = dataSource
+                
+                // Start the workout
+                session.startActivity(with: Date())
+                builder.beginCollection(withStart: Date()) { (success, error) in
+                    print("Beginning workout metric collection...")
+                    let urlSession = URLSession(configuration: .default)
+                    let webSocketTask = urlSession.webSocketTask(with: URL(string: "ws://localhost:8080/ws/metrics")!)
+                    print("Opening Websocket connection to url: ws://localhost:8080/ws/metrics")
+                    webSocketTask.resume()
+                    
+                    HeartRatePublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore, forIdentifier: .heartRate)
+//                    HeartRatePublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore, forIdentifier: .activeEnergyBurned)
+                }
+            } catch {
+                print("There was an error starting the workout")
             }
-            
-            let urlSession = URLSession(configuration: .default)
-            let webSocketTask = urlSession.webSocketTask(with: URL(string: "ws://localhost:8080/ws/metrics")!)
-            print("Opening Websocket connection to url: ws://localhost:8080/ws/metrics")
-            webSocketTask.resume()
-            
-            HeartRatePublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
-            RespiratoryRatePublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
-            OxygenSaturationPublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
-            BodyTemperaturePublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
-            BloodPressureSysPublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
-            BloodPressureDiastolicPublisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
-            VO2Publisher(webSocketTask: webSocketTask).publish(healthStore: healthStore)
-          } catch {
-            print("There was an error starting the workout")
-          }
-       return LandmarkList {
-        WatchLandmarkDetail(landmark: $0)
-       }.environmentObject(UserData())
+        }
+        return LandmarkList {
+            WatchLandmarkDetail(landmark: $0)
+        }.environmentObject(UserData())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-         LandmarkList { WatchLandmarkDetail(landmark: $0) }
-                   .environmentObject(UserData())
+        LandmarkList { WatchLandmarkDetail(landmark: $0) }
+            .environmentObject(UserData())
     }
 }

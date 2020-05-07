@@ -10,5 +10,5 @@ import Foundation
 import HealthKit
 
 protocol Publisher {
-    func publish(healthStore: HKHealthStore) -> Void
+    func publish(healthStore: HKHealthStore, forIdentifier: HKQuantityTypeIdentifier) -> Void
 }

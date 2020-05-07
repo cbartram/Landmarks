@@ -48,12 +48,16 @@
 	</dict>
 	<key>NSHealthShareUsageDescription</key>
 	<string>We require access to share some health metrics</string>
+	<key>NSHealthClinicalHealthRecordsShareUsageDescription</key>
+	<string>We require access to stream some health metrics for analysis.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>We require access to some health metrics</string>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoadsUsageDescription</key>
+		<dict/>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
